@@ -214,9 +214,14 @@ bgdois.playbackRate = 1;
                 if(!cta) return;
                 const p = ctaSection.querySelector('p');
                 const btn = ctaSection.querySelector('.cta-button');
+                const heroBtn = document.querySelector('.hero-btn');
                 
                 if(p) p.textContent = cta.helpText;
-                if(btn) btn.textContent = cta.buttonText;
+                if(btn) {
+                    btn.textContent = cta.buttonText;
+                    if(cta.link) btn.href = cta.link;
+                }
+                if(heroBtn && cta.link) heroBtn.href = cta.link;
             })
             .catch(err => console.log('Erro ao carregar banco CTA:', err));
     }
